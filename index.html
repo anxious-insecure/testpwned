@@ -34,7 +34,7 @@
           return response.json();
         })
         .then(data => {
-          if (data && data.length > 0) {
+          if (data.pwned) {
             resultDiv.textContent = 'This email has been pwned.';
           } else {
             resultDiv.textContent = 'This email has not been pwned.';

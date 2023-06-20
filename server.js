@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 
 app.post('/breachedaccount', async (req, res) => {
   const email = req.body.email;
-  const url = `https://haveibeenpwned.com/api/v2/breachedaccount/${email}`;
+  const url = `https://haveibeenpwned.com/api/v3/breachedaccount/${email}`;
 
   try {
     const response = await fetch(url, {
