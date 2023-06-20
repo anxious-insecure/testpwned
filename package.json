@@ -1,0 +1,21 @@
+{
+  "name": "haveibeenpwned-checker",
+  "version": "1.0.0",
+  "description": "A simple service to check if an email has been pwned using the Have I Been Pwned API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "email",
+    "security",
+    "breach",
+    "haveibeenpwned"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1"
+  }
+}

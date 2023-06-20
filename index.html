@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Email Pwned Check</title>
+  </head>
+  <body>
+    <h1>Have I Been Pwned?</h1>
+    <form id="check-form">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+      <button type="submit">Check</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+      document.getElementById('check-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        let email = document.getElementById('email').value;
+        let resultDiv = document.getElementById('result');
+        
+        fetch('/breachedaccount', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data && data.length > 0) {
+            resultDiv.textContent = 'This email has been pwned.';
+          } else {
+            resultDiv.textContent = 'This email has not been pwned.';
+          }
+        })
+        .catch(() => {
+          resultDiv.textContent = 'There was a problem checking this email.';
+        });
+      });
+    </script>
+  </body>
+</html>
